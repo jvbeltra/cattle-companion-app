@@ -5,14 +5,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: Constants.statusBarHeight + 20,
-
-    },
-
-    title:{
-        fontSize:30,
-        marginBottom:16,
-        // marginTop:48,
-        color:'#13131a'
+    alignItems: 'center'
     },
 
     description:{
@@ -20,7 +13,16 @@ export default StyleSheet.create({
         lineHeight:24,
         color: '#737380'
     },
-
+    inputText:{
+        backgroundColor:'#C0C0C0',
+        borderRadius:8,
+        height:30,
+        width: '60%',
+        marginTop: 20,
+        marginBottom:20,
+        fontSize:14
+        
+    },
     buttons:{
         
         alignItems: 'center'
@@ -31,10 +33,10 @@ export default StyleSheet.create({
         backgroundColor:'#13131a',
         borderRadius:8,
         height:50,
-        width: '48%',
+        width: '70%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:50,
+        marginTop:30,
         // marginBottom:20,
         // marginLeft:100
 
@@ -46,4 +48,6 @@ export default StyleSheet.create({
         fontSize:15,
         fontWeight: 'bold'
     }
-});
+
+
+})
