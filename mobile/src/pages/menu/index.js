@@ -15,6 +15,7 @@ export default function Menu(){
         navigation.navigate('Buscar')
     }
 
+
     return (
         <View style={styles.container}>
             
@@ -30,11 +31,7 @@ export default function Menu(){
                         <Text style = {styles.action}> Buscar</Text>
                 </TouchableOpacity>
 
-            </View> 
-           
-        
+            </View>
         </View>
-
-       
     );
 }

@@ -1,13 +1,12 @@
 const { Router } = require('express')
-const DevController = require('./controllers/cattle.js')
-const SearchController = require('./controllers/search.js')
+const CattleController = require('./controllers/cattle.js')
 
 const routes = Router()
 
-routes.get('/cattle', DevController.index)
-routes.get('/cattle/:id', DevController.indexOne)
-routes.delete('/cattle/:id', DevController.delete)
-routes.post('/cattle', DevController.store)
-routes.patch('/cattle/:id', DevController.update)
+routes.get('/cattle', CattleController.find)
+routes.get('/cattle/:id', CattleController.findOne)
+routes.delete('/cattle/:id', CattleController.delete)
+routes.post('/cattle', CattleController.create)
+routes.patch('/cattle/:id', CattleController.update)
 
 module.exports = routes

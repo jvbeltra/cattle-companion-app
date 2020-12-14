@@ -1,50 +1,71 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList} from 'react-native';
+import React, {useState, useEffect} from 'react'
+import {View, Text, TextInput, TouchableOpacity, FlatList} from 'react-native';
+
 import styles from './styles';
 
-export default function Buscar(){
-    function search(){
+import api from '../../services/api'
 
+let filter;
+
+export default function Buscar() {
+    let myTextInput;
+
+    let [cattle, setCattle] = useState([])
+
+    async function loadCattle() {
+        const response = await api.get('cattle')
+        // response.data.filter(el => el.lastArea === (A3))
+
+        if (filter){
+            debugger
+            cattle = response.data.filter(el => el.lastArea === filter)
+
+        } else {
+            cattle = response.data
+        }
+
+        setCattle([...cattle])
+        if (myTextInput) {
+            myTextInput.current.clear();
+        }
     }
-    
+
+    useEffect(() => {
+        loadCattle()
+    }, [])
+
+
     return (
-        <View style = {styles.container}>
-            <Text style = {styles.description} > Digite o ID da área </Text>
-            <TextInput style ={styles.inputText}></TextInput>
+        <View style={styles.container}>
+            <Text style={styles.description}> Digite o ID da área </Text>
+            <TextInput ref={myTextInput} onChangeText={val => filter = val} style={styles.inputText}></TextInput>
             <View style={styles.button}>
-                <TouchableOpacity style = {styles.actions} onPress =  {search}>
-                        <Text style = {styles.action}> Buscar</Text>
-                </TouchableOpacity>                
-                
+                <TouchableOpacity style={styles.actions} onPress={loadCattle}>
+                    <Text style={styles.action}> Buscar</Text>
+                </TouchableOpacity>
+
             </View>
-            
+
             <FlatList
-                data={[1,2,3,4,5,6,7]}
-                style = {styles.incidentList}
+                data={cattle}
+                style={styles.incidentList}
                 showsVerticalScrollIndicator={false}
-                keyExtractor = {incident=>String (incident)}
-                
-                renderItem = {()=>(
-                
-                <View style={styles.incidentList}>
-                    <View style = {styles.incident}>
-                        <Text style = {styles.incidentProperty}>ID Animal: Vaca endiabrada</Text>
-                        {/* <Text style = {styles.incidentValue}>Vaca endiabrada</Text> */}
-                        <Text style = {styles.incidentProperty}>Status: Morta</Text>
-                        {/* <Text style = {styles.incidentValue}>Morta</Text> */}
-                        <Text style = {styles.incidentProperty}>Data: 06/06/666</Text>
-                        {/* <Text style = {styles.incidentValue}>06/06/666</Text> */}
+                keyExtractor={gado => String(gado._id)}
 
-                   
+                renderItem={({item: gado}) => (
 
+                    <View style={styles.incidentList}>
+                        <View style={styles.incident}>
+                            <Text style={styles.incidentProperty}>Identificador do animal: {gado.identifier}</Text>
+                            <Text style={styles.incidentProperty}>Última área: {gado.lastArea}</Text>
+                            <Text style={styles.incidentProperty}>Atualizado em: {gado.lastSeen}</Text>
+                        </View>
                     </View>
-            </View>
 
-            )}
+                )}
             />
-            
-            
-            
+
+
         </View>
     );
 }

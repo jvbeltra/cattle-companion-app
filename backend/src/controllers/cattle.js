@@ -2,22 +2,22 @@ const axios = require('axios')
 const Cattle = require('../models/cattle.js')
 
 module.exports = {
-    async index(request, response) {
+    async find(request, response) {
         const devs = await Cattle.find()
 
         return response.json(devs)
     },
 
-    async store(request, response) {
-        const {identifier} = request.body
+    async create(request, response) {
+        const {identifier, lastArea, lastSeen} = request.body
 
         let cattle = await Cattle.findOne({identifier});
 
         if (!cattle) {
             cattle = await Cattle.create({
                 identifier,
-                lastArea: "",
-                status: ""
+                lastArea,
+                lastSeen
             })
         }
 
@@ -38,7 +38,7 @@ module.exports = {
         response.json(cattle)
     },
 
-    async indexOne(request, response) {
+    async findOne(request, response) {
         let cattle = await Cattle.findById(request.params.id)
 
         response.json(cattle)
