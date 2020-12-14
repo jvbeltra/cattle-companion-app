@@ -21,8 +21,20 @@ export default StyleSheet.create({
         marginTop: 20,
         marginBottom:20,
         fontSize:14
-        
     },
+
+    error:{
+        fontSize: 16,
+        lineHeight:24,
+        color: '#b31320'
+    },
+
+    created:{
+        fontSize: 16,
+        lineHeight:24,
+        color: '#13b337'
+    },
+
     buttons:{
         
         alignItems: 'center'

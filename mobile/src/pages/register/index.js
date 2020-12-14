@@ -16,7 +16,7 @@ import styles from './styles';
 
 export default class Register extends React.Component {
     state = {
-        username: '', password: '', email: '', phone_number: ''
+       showError: false, showSuccess: false
     }
     onChangeText = (key, val) => {
         this.setState({[key]: val})
@@ -38,9 +38,9 @@ export default class Register extends React.Component {
 
             let lastSeen = `${dd}/${mm}/${yyyy} ${hh}:${min}`;
             await api.post('/cattle', {identifier, lastArea, lastSeen});
-            console.log('user successfully signed up!: ')
+            this.setState({ showError: false, showSuccess: true})
         } catch (err) {
-            console.log('error signing up: ', err)
+            this.setState({showSuccess: false, showError: true})
         }
     }
 
@@ -52,21 +52,23 @@ export default class Register extends React.Component {
                 <Text style={styles.description}> Insira o ID da área inicial do animal</Text>
                 <TextInput name="lastArea"   onChangeText={val => this.onChangeText('lastArea', val)} style={styles.inputText}/>
 
-                {/*<View style={styles.button}>*/}
-                {/*    <TouchableOpacity style = {styles.actions} onPress={this.addCattle()}>*/}
-                {/*        <Text style = {styles.action}> Registrar</Text>*/}
-                {/*    </TouchableOpacity>*/}
-                {/*</View>*/}
                 <View style={styles.action}>
                 <Button
                     // style={styles.button}
                     title='Cadastrar'
                     color='#000000'
-                    
-                    
                     onPress={this.addCattle}
                 />
                 </View>
+                <Text>{" "}</Text>
+
+                {this.state.showSuccess &&
+                <Text style={styles.created}> Animal cadastrado com sucesso! </Text>
+                }
+
+                {this.state.showError  &&
+                <Text style={styles.error}> Erro ao cadastrar animal </Text>
+                }
                 
             </View>
         )

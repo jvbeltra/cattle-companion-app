@@ -14,10 +14,8 @@ export default function Buscar() {
 
     async function loadCattle() {
         const response = await api.get('cattle')
-        // response.data.filter(el => el.lastArea === (A3))
 
         if (filter){
-            debugger
             cattle = response.data.filter(el => el.lastArea === filter)
 
         } else {
