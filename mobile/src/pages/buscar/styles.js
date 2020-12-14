@@ -13,12 +13,17 @@ export default StyleSheet.create({
         lineHeight:24,
         color: '#737380'
     },
+
+    search:{
+        flexDirection: 'row'
+    },
+
     inputText:{
         backgroundColor:'#C0C0C0',
         borderRadius:8,
-        height:30,
+        height:35,
         width: '60%',
-        marginTop: 20,
+        marginTop: 22,
         marginBottom:0,
         fontSize:14
         
@@ -32,11 +37,12 @@ export default StyleSheet.create({
         
         backgroundColor:'#13131a',
         borderRadius:8,
-        height:50,
-        width: '40%',
+        height:40,
+        width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:10,
+        marginTop:20,
+        marginLeft:30
         // marginBottom:20,
         // marginLeft:100
 
@@ -46,7 +52,10 @@ export default StyleSheet.create({
     action:{
         color:'#FFF',
         fontSize:15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
+        
     },
 
     incidentList:{

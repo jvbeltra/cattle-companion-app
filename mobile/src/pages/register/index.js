@@ -57,12 +57,17 @@ export default class Register extends React.Component {
                 {/*        <Text style = {styles.action}> Registrar</Text>*/}
                 {/*    </TouchableOpacity>*/}
                 {/*</View>*/}
-
+                <View style={styles.action}>
                 <Button
-                    style={styles.button}
+                    // style={styles.button}
                     title='Cadastrar'
+                    color='#000000'
+                    
+                    
                     onPress={this.addCattle}
                 />
+                </View>
+                
             </View>
         )
     }

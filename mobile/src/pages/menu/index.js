@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles'
-
+import logoImg from '../../assets/logo.png'
 
 export default function Menu(){
     const navigation = useNavigation();
@@ -18,8 +18,13 @@ export default function Menu(){
 
     return (
         <View style={styles.container}>
+            <View style={styles.header}>
+                
+                
+                <Text style={styles.title}> Olá!</Text>
+                <Image source = {logoImg} />
+            </View>
             
-            <Text style={styles.title}> Olá!</Text>
             <Text style={styles.description}> Escolha uma das opções abaixo</Text>
 
            <View style = {styles.buttons}>

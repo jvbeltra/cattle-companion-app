@@ -4,7 +4,8 @@ export default StyleSheet.create({
     container:{
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: Constants.statusBarHeight + 20,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#fff'
 
     },
 
@@ -12,13 +13,22 @@ export default StyleSheet.create({
         fontSize:30,
         marginBottom:16,
         // marginTop:48,
-        color:'#13131a'
+        color:'#13131a',
+        flexDirection:'row'
     },
 
     description:{
         fontSize: 16,
         lineHeight:24,
-        color: '#737380'
+        color: '#737380',
+        marginLeft:40
+    },
+
+    header:{
+       flexDirection:'row',
+       justifyContent:'space-between',
+       alignItems:'center',
+       marginBottom:20
     },
 
     buttons:{
@@ -30,7 +40,7 @@ export default StyleSheet.create({
         
         backgroundColor:'#13131a',
         borderRadius:8,
-        height:50,
+        height:40,
         width: '48%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -44,6 +54,8 @@ export default StyleSheet.create({
     action:{
         color:'#FFF',
         fontSize:15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 });

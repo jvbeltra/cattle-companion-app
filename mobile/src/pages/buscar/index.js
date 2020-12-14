@@ -37,14 +37,17 @@ export default function Buscar() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.description}> Digite o ID da área </Text>
+            <Text style={styles.description}> Digite o ID da área: </Text>
+            <View style = {styles.search}>
             <TextInput ref={myTextInput} onChangeText={val => filter = val} style={styles.inputText}></TextInput>
-            <View style={styles.button}>
+            <View style={styles.buttons}>
                 <TouchableOpacity style={styles.actions} onPress={loadCattle}>
                     <Text style={styles.action}> Buscar</Text>
                 </TouchableOpacity>
 
             </View>
+            </View>
+            
 
             <FlatList
                 data={cattle}

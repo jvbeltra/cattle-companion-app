@@ -28,11 +28,15 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
 
+    button:{
+        color:'#737380'
+    },
+
     actions:{
         
         backgroundColor:'#13131a',
         borderRadius:8,
-        height:50,
+        height:40,
         width: '70%',
         justifyContent: 'center',
         alignItems: 'center',
